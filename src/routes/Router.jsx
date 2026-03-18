@@ -3,6 +3,7 @@ import Root from "../root/Root";
 import Home from "../pages/Home/Home";
 import Apps from "../pages/Apps/Apps";
 import AppDetails from "../pages/AppDetails/AppDetails";
+import Installations from "../pages/Installations/Installations";
 
 export const Router = createBrowserRouter([
     {
@@ -18,8 +19,12 @@ export const Router = createBrowserRouter([
                 Component: Apps,
             },
             {
-                path: "apps/:id",
+                path: "/app/:id",
                 Component: AppDetails,
+            },
+            {
+                path: 'installations',
+                Component: Installations,
             }
         ]
     }

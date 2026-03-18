@@ -10,7 +10,7 @@ const Appcard = ({ app }) => {
 
   return (
     <div
-        onClick={() => navigate(`/apps/${app.id}`)}
+        onClick={() => navigate(`/app/${app.id}`)}
       className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-base-200"
     >
       <div className="card-body p-4 gap-2">

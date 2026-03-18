@@ -2,60 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 import StatBlock from "../../components/StatBlock";
 import RatingBar from "../../components/RatingBar";
 import { formatNumber } from "../../../utils/formatNumber";
-
-// function RatingBar({ star, count, maxCount, animate }) {
-//     const pct = maxCount > 0 ? (count / maxCount) * 100 : 0;
-   
-//     return (
-//       <div className="flex items-center gap-3">
-//         <span className="text-xs text-gray-500 w-10 text-right flex-shrink-0">{star}</span>
-//         <div className="flex-1 bg-gray-100 rounded overflow-hidden" style={{ height: "22px" }}>
-//           <div
-//             className="h-full rounded bg-orange-500 transition-all"
-//             style={{
-//               width: animate ? `${pct}%` : "0%",
-//               transitionDuration: "1.1s",
-//               transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)",
-//             }}
-//           />
-//         </div>
-//         <span className="text-xs text-gray-400 w-14 flex-shrink-0 text-right">
-//           {count.toLocaleString()}
-//         </span>
-//       </div>
-//     );
-//   }
-   
-  // ─── Stat Block ───────────────────────────────────────────────────────────────
-//   function StatBlock({ icon, iconBg, label, value }) {
-//     return (
-//       <div>
-//         <div className={`w-9 h-9 rounded-xl ${iconBg} flex items-center justify-center mb-2`}>
-//           {icon}
-//         </div>
-//         <p className="text-xs text-gray-400 mb-0.5">{label}</p>
-//         <p className="text-2xl md:text-3xl font-extrabold text-gray-900" style={{ fontFamily: "Syne, sans-serif" }}>
-//           {value}
-//         </p>
-//       </div>
-//     );
-//   }
+import { useParams } from "react-router";
 
 const AppDetails = () => {
+    const { id } = useParams(); // ✅ get id from URL
 
     const [app, setApp] = useState(null);
     const [installed, setInstalled] = useState(false);
     const [barsAnimated, setBarsAnimated] = useState(false);
     const barsRef = useRef(null);
 
-
     useEffect(() => {
-        fetch('/data.json')
-        .then(res => res.json())
-        .then(data => {         
-                setApp(data[0])           
-            }) 
-    }, [])
+        fetch("/data.json")
+          .then((res) => res.json())
+          .then((data) => {
+            const foundApp = data.find((a) => a.id === parseInt(id));
+            setApp(foundApp);
+          });
+      }, [id]);
 
     useEffect(() => {
         if(!app) return;

@@ -10,3 +10,11 @@ export function formatNumber(num){
     }
     return num;
 }
+
+export function readInstalled() {
+    return JSON.parse(localStorage.getItem("installedApps") || "[]")
+}
+
+export function writeInstalled(arr) {
+    localStorage.setItem("installedApps", JSON.stringify(arr));
+}

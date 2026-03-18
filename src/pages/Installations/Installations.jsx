@@ -10,20 +10,19 @@ const Installations = () => {
     const [loading, setLoading]  = useState(true);
 
     useEffect(() => {
-        fetch('/data.json')
-        .then(res => res.json())
-        .then(data => {
             const t = setTimeout(() => {
-                setApps(data)
+                const installedApps = readInstalled();
+                setApps(installedApps)
                 setLoading(false);
             }, 500);    
-            return () => clearTimeout(t);
-    }) 
-    }, [])
+            return () => clearTimeout(t); 
+        }, [])
 
     function enrich(app) {
-        const m = apps[app.id] || {};
-        return { ...app, size: m.size || "—", downloadsNum: m.downloadsNum || 0, ratingNum: m.ratingNum || 0 };
+        return { ...app, 
+            downloadsNum: app.downloads || 0,
+            ratingNum: app.rating || 0,
+         };
       }
        
       function applySort(apps, mode) {

@@ -39,8 +39,13 @@ const AppDetails = () => {
         const saved = JSON.parse(localStorage.getItem("installedApps") || "[]");
         if (!saved.some((a) => a.id === app.id)) {
           saved.push({
-            id: app.id, title: app.title, company: app.companyName,
-            image: app.image, downloads: app.downloads, rating: app.ratingAvg,
+            id: app.id, 
+            title: app.title, 
+            company: app.companyName,
+            image: app.image, 
+            downloads: app.downloads, 
+            rating: app.ratingAvg, 
+            size:app.size,
           });
           localStorage.setItem("installedApps", JSON.stringify(saved));
         }

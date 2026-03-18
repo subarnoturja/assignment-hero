@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatNumber } from '../../utils/formatNumber';
 
 const AppRow = ({ app, onUninstall, animDelay}) => {
     const [exiting, setExiting] = useState(false);
@@ -7,7 +8,7 @@ const AppRow = ({ app, onUninstall, animDelay}) => {
     setExiting(true);
     setTimeout(() => onUninstall(app.id, app.title), 380);
   };
-  
+
     return (
         <div
         className="bg-white rounded-2xl border border-gray-200 flex items-center gap-4 p-4 md:p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
@@ -18,9 +19,8 @@ const AppRow = ({ app, onUninstall, animDelay}) => {
         }}
       >
         {/* App image / emoji */}
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0 select-none"
-          style={{ fontSize: "2.2rem" }}>
-          {app.emoji || "📦"}
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0 select-none">
+          <img src={app.image} />
         </div>
  
         {/* Info */}
@@ -37,7 +37,7 @@ const AppRow = ({ app, onUninstall, animDelay}) => {
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd"/>
               </svg>
-              {app.downloads || "—"}
+              {formatNumber(app.downloads || "—")}
             </span>
             {/* Rating */}
             <span className="flex items-center gap-1 text-amber-500 font-semibold text-xs">
@@ -47,7 +47,7 @@ const AppRow = ({ app, onUninstall, animDelay}) => {
               {app.rating || "—"}
             </span>
             {/* Size */}
-            <span className="text-gray-400 text-xs font-medium">{app.size}</span>
+            <span className="text-gray-400 text-xs font-medium">{app.size || "-"} MB</span>
           </div>
         </div>
  

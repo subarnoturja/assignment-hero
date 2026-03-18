@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { readInstalled, writeInstalled } from "../../../utils/formatNumber";
 import EmptyState from "../../components/EmptyState";
 import AppRow from "../../components/AppRow";
+import { SlSocialDropbox } from "react-icons/sl";
 
 const Installations = () => {
 
@@ -55,12 +56,14 @@ const Installations = () => {
       >
         {/* Page heading */}
         <div className="text-center mb-10 md:mb-12">
-          <h1
-            className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3"
-            style={{ fontFamily: "Syne, sans-serif" }}
-          >
-            Your Installed Apps
-          </h1>
+            <div className="flex justify-center items-center gap-3">
+                <h1
+                className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3"
+                >
+                Your Installed Apps
+                </h1>
+                <SlSocialDropbox size={32} color="blue" />
+            </div>
           <p className="text-gray-400 text-sm md:text-base">
             Explore All Trending Apps on the Market developed by us
           </p>

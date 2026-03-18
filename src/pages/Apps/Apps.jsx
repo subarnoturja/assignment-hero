@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Appcard from '../../components/Appcard';
+import { DiVisualstudio } from 'react-icons/di';
 
 const Apps = () => {
 
     const [apps, setApps] = useState([])
     const [query, setQuery] = useState("");
-    // const [filtered, setFiltered] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searching, setSearching] = useState(false);
     const timerRef = useRef(null);
@@ -36,12 +36,15 @@ const Apps = () => {
 
     return (
         <div className="bg-gray-50 border-b border-gray-200 py-10 md:py-14 text-center px-4">
+        <div className="flex justify-center items-center gap-3">
         <h1
           className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight"
           style={{ fontFamily: "Syne, sans-serif" }}
         >
           Our All Applications
         </h1>
+        <DiVisualstudio size={40} color="blue" />
+        </div>
         <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto">
           Explore All Apps on the Market developed by us. We code for Millions
         </p>

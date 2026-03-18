@@ -2,10 +2,15 @@ import React from "react";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { formatNumber } from "../../utils/formatNumber";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const Appcard = ({ app }) => {
+
+    const navigate = useNavigate();
+
   return (
     <div
+        onClick={() => navigate(`/apps/${app.id}`)}
       className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-base-200"
     >
       <div className="card-body p-4 gap-2">

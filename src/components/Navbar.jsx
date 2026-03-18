@@ -7,13 +7,13 @@ const Navbar = () => {
     const navLinks = (
         <>
             <li>
-                <Link>Home</Link>
+                <Link to='/'>Home</Link>
             </li>
             <li>
-                <Link>Apps</Link>
+                <Link to='/apps'>Apps</Link>
             </li>
             <li>
-                <Link>Installations</Link>
+                <Link to='/installations'>Installations</Link>
             </li>
         </>
     )

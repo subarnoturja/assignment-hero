@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const EmptyState = () => {
     return (
@@ -8,11 +9,13 @@ const EmptyState = () => {
         No Apps Installed Yet
       </h3>
       <p className="text-gray-400 text-sm">Head to the Apps page and install your favorites.</p>
+      <Link to='/apps'>
       <button
         className="btn bg-violet-600 hover:bg-violet-700 text-white border-0 rounded-xl px-8 mt-2 shadow shadow-violet-200"
       >
         Browse Apps →
       </button>
+      </Link>
     </div>
     );
 };

@@ -3,6 +3,7 @@ import StatBlock from "../../components/StatBlock";
 import RatingBar from "../../components/RatingBar";
 import { formatNumber } from "../../../utils/formatNumber";
 import { useParams } from "react-router";
+import { Bounce, toast } from "react-toastify";
 
 const AppDetails = () => {
     const { id } = useParams(); // ✅ get id from URL
@@ -50,6 +51,17 @@ const AppDetails = () => {
           localStorage.setItem("installedApps", JSON.stringify(saved));
         }
         setInstalled(true);
+        toast(`You install ${app.title} successfully`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       };
      
       const maxCount = app?.ratings ? Math.max(...app.ratings.map(r => r.count)) : 0;

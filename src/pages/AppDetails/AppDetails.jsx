@@ -4,6 +4,7 @@ import RatingBar from "../../components/RatingBar";
 import { formatNumber } from "../../../utils/formatNumber";
 import { useParams } from "react-router";
 import { Bounce, toast } from "react-toastify";
+import Skeleton from "../../components/Skeleton";
 
 const AppDetails = () => {
     const { id } = useParams(); // ✅ get id from URL
@@ -67,7 +68,7 @@ const AppDetails = () => {
       const maxCount = app?.ratings ? Math.max(...app.ratings.map(r => r.count)) : 0;
 
       if (!app) {
-        return <p>Loading...</p>;
+        return <Skeleton />;
       }
 
   return (
@@ -78,7 +79,7 @@ const AppDetails = () => {
           <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
             {/* Image */}
             <div className="flex-shrink-0 flex justify-center sm:justify-start">
-              <div className="w-44 h-44 md:w-52 md:h-52 rounded-2xl border border-gray-100 bg-gray-50 flex items-center justify-center shadow-inner">
+              <div className="w-44 h-44 md:w-52 md:h-52 rounded-2xl border border-gray-100 bg-gray-50 flex items-center justify-center">
                 <img src={app.image} alt={app.title} />
               </div>
             </div>
